@@ -1,6 +1,61 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-body {
-  font-family: Arial, sans-serif;
-  background: #f5f7fb;
-} 
+@layer base {
+  :root {
+    --glass-background: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --premium-pink: #ff8fa3;
+    --premium-purple: #7b2cbf;
+    --soft-violet: #dec9ff;
+    --text-primary: #2d3436;
+    --text-secondary: #636e72;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #fce4ec 0%, #ede7f6 100%);
+    min-height: 100vh;
+    color: var(--text-primary);
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .glass-effect {
+    background: var(--glass-background);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 2rem;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer components {
+  .btn-premium {
+    @apply px-6 py-3 rounded-2xl font-bold transition-all duration-300;
+    background: linear-gradient(90deg, #ff8fa3 0%, #ff5c8d 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 143, 163, 0.3);
+  }
+
+  .btn-premium:hover {
+    @apply scale-105;
+    box-shadow: 0 6px 20px rgba(255, 143, 163, 0.4);
+  }
+
+  .input-premium {
+    @apply w-full px-5 py-4 bg-white/50 border border-white/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all;
+  }
+}
